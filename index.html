@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .fact-display {
+            background-color: #a5d6a7;
+            border: 2px solid #388e3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .fact-button, .twitter-button {
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .fact-button:hover, .twitter-button:hover {
+            background-color: #2e7d32;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="fact-display" class="fact-display">
+        Click the button to see a crocodile fact!
+    </div>
+    <button id="fact-button" class="fact-button">Show Random Fact</button>
+    <button id="twitter-button" class="twitter-button">Share on Twitter</button>
+
+    <script>
+        const facts = [
+            "Crocodiles have been around for about 200 million years, making them one of the oldest living species.",
+            "They can hold their breath underwater for up to an hour.",
+            "Crocodiles have a powerful bite, with a force of over 3,000 pounds per square inch.",
+            "Despite their size, crocodiles can swim up to 20 miles per hour.",
+            "They have a special valve in their throat that allows them to open their mouths underwater without drowning.",
+            "Crocodiles can live up to 70 years in the wild.",
+            "They have a unique way of cooling down by opening their mouths, a behavior known as 'mouth gaping'.",
+            "Crocodiles are more closely related to birds and dinosaurs than to other reptiles.",
+            "They have excellent night vision, which helps them hunt in the dark.",
+            "Crocodiles can replace each of their 80 teeth up to 50 times in their lifetime.",
+            "They communicate with each other through vocalizations, including growls, hisses, and roars.",
+            "Some species of crocodiles can leap out of the water to catch prey.",
+            "Crocodiles have a four-chambered heart, similar to birds and mammals.",
+            "They are known to use tools, such as sticks, to lure birds during nesting season.",
+            "Female crocodiles are very protective of their nests and young, often carrying hatchlings in their mouths to water."
+        ];
+
+        document.getElementById('fact-button').addEventListener('click', () => {
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            const factDisplay = document.getElementById('fact-display');
+            factDisplay.textContent = randomFact;
+            factDisplay.style.opacity = 0;
+            setTimeout(() => {
+                factDisplay.style.opacity = 1;
+            }, 100);
+        });
+
+        document.getElementById('twitter-button').addEventListener('click', () => {
+            const factDisplay = document.getElementById('fact-display').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(factDisplay)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
